@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue 示例</title>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="message" placeholder="输入...">
+            <p>输入的内容:{{ message }}</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: ''
+                }
+            })
+        </script>
+    </body>
+</html>

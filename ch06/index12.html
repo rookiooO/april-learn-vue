@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <div id="app">
+        <input type="number" v-model.number="message">
+        <p>{{ typeof message }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 123
+            }
+        })
+    </script>
+</html>

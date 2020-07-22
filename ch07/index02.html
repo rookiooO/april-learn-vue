@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<div id="app">
+    <table>
+        <tbody is="my-component"></tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var Child = {
+        template: '<div>这里是组件的内容</div>'
+    }
+    var app = new Vue({
+        el: '#app',
+        components: {
+            'my-component': Child
+        }
+    })
+</script>
+
+</html>

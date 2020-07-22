@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue 示例</title>
+    </head>
+    <body>
+        <div id="app">
+            {{ book }}
+            {{ date }}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            /*根实例*/
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    book : '《Vue.js 实战》',
+                    date : new Date()
+                },
+                mounted() {
+                    var _this = this
+                    this.timer = setInterval(function() {
+                        _this.date = new Date()
+                    },1000)
+                },
+                beforeDestror() {
+                    if(this.timer) {
+                        clearInterval(this.timer)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

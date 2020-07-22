@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <div id="app">
+        <select v-model="selected">
+            <option :value="{ number: 123}">123</option>
+        </select>
+        {{ selected.number }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                selected: ''
+            }
+        })
+    </script>
+</html>

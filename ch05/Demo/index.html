@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>购物车示例</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <template v-if="list.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th>商品种类</th>
+                        <th>订单编号</th>
+                        <th>选中商品</th>
+                        <th>商品名称</th>
+                        <th>商品单价</th>
+                        <th>购买数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody v-for="(item, i) in list" :key="i">
+                    <td :rowspan= "item.produces.length + 1">{{ item.name }}</td>
+                    <tr v-for="(shop, j) in item.produces" :key="j">
+                        <td>{{ j + 1 }}</td>
+                        <td>
+                            <input type="checkbox" v-model="shop.isSelect">
+                        </td>
+                        <td>{{ shop.name }}</td>
+                        <td>{{ shop.price }}</td>
+                        <td>
+                            <button @click="handleReduce(i, j)" :disabled="shop.count === 1">-</button>
+                            {{ shop.count }}
+                            <button @click="handleAdd(i, j)">+</button>
+                        </td>
+                        <td>
+                            <button @click="handleRemove(i, j)">移除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>总价:¥ {{ totalPrice }}</div>
+        </template>
+        <div v-else>购物车为空</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

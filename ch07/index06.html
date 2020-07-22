@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<div id="app">
+    <input type="text" v-model="parentMessage">
+    <my-component :parent-message="parentMessage"></my-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('my-component',{
+        props: ['parentMessage'],
+        template: '<div>{{ parentMessage }}</div>'
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            parentMessage: ''
+        }
+    })
+</script>
+</html>

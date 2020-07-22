@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue 示例</title>
+    </head>
+    <body>
+        <div id="app">
+           {{ date | formatDate }}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var padDate = function(value) {
+                return value < 10 ? '0' + value : value;
+            }
+            /*根实例*/
+            var app = new Vue({
+                el:'#app',
+                data() {
+                    return {
+                        date : new Date()
+                    }
+                },
+                filters: {
+                        formatDate : function(value) {
+                            var date = new Date(value)
+                            var year = date.getFullYear()
+                            var month = padDate(date.getMonth() + 1)
+                            var day = padDate(date.getDate())
+                            var hours = padDate(date.getHours())
+                            var minutes = padDate(date.getMinutes())
+                            var seconds = padDate(date.getSeconds())
+                            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds
+                        } 
+                },
+                mounted() {
+                    var _this = this
+                    this.timer = setInterval(function() {
+                        _this.date = new Date()
+                    },1000)
+                },
+                beforeDestory() {
+                    if(this.timer) {
+                        clearInterval(this.timer)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<div id="app">
+    <select v-model="selected" multiple>
+        <option v-for="option in options" :value="option.value"> {{ option.text }} </option>
+    </select>
+    <p>选择的项是:{{ selected }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selected: ['html', 'js'],
+            options: [
+                {
+                    text: 'HTML',
+                    value: 'html'
+                },
+                {
+                    text: 'JavaScript',
+                    value: 'js'
+                },
+                {
+                    text: 'CSS',
+                    value: 'css'
+                }
+            ]
+        }
+    })
+</script>
+
+</html>
