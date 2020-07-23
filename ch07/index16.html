@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="app">
+        <child-component v-show="showChild"></child-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child-component', {
+            template: '<div>子组件</div>'
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                showChild: true
+            }
+        })
+    </script>
+</body>
+
+</html>
