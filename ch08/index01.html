@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-test="{msg: 'hello', name: 'Arsesn'}"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.directive('test',{
+            bind:function(el, binding, vnode) {
+                var keys = []
+                for(var i in vnode) {
+                    keys.push(i)
+                }
+                el.innerHTML = 
+                    'name: ' + binding.name + '<br>' +
+                    'value: ' + binding.value + '<br>' +
+                    'expression: ' + binding.expression + '<br>' +
+                    'argument: ' + binding.arg + '<br>' +
+                    'modifiters: ' + JSON.stringify(binding.modifiters) + '<br>' +
+                    'vnode keys: ' + keys.join(',')
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'some text'
+            }
+        })
+    </script>
+</body>
+
+</html>
